@@ -11,4 +11,5 @@ if __name__ == "__main__":
         name="my-first-deployment",
         work_pool_name="my-work-pool", # Work pool target
         cron="0 1 * * *", # Cron schedule (every minute)
+        parameters={"x": 5, "y": 15},
     )
