@@ -1,4 +1,8 @@
 from prefect import flow,task
+from prefect.cache_policies import INPUTS
+
+from typing import Any
+from datetime import timedelta
 
 @flow(log_prints=True)
 def calc(x,y):
@@ -7,7 +11,7 @@ def calc(x,y):
 
 	print(f"With {x},{y}: addition gives {addition} and substraction gives {substraction}")
 
-@task
+@task(cache_policy=INPUTS, cache_expiration=timedelta(days=1))
 def add(x,y):
 	return (x+y)
 

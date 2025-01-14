@@ -1,7 +1,7 @@
 from prefect import flow
 
 # Source for the code to deploy (here, a GitHub repo)
-SOURCE_REPO="git@github.com:Varashines/Prefect.git"
+SOURCE_REPO="https://github.com/Varashines/Prefect.git"
 
 if __name__ == "__main__":
     flow.from_source(
@@ -10,6 +10,6 @@ if __name__ == "__main__":
     ).deploy(
         name="my-first-deployment",
         work_pool_name="my-work-pool", # Work pool target
-        cron="* * * * *", # Cron schedule (every minute)
+        cron="0 1 * * *", # Cron schedule (every minute)
         parameters={"x": 5, "y": 15},
     )
